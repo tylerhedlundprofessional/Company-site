@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyler Hedlund Automation | Websites and online booking for local businesses</title>
+<meta name="description" content="A simple website with online booking for local service businesses, plus a monthly plan that keeps it running. Based in Hinckley, Minnesota.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--pine:#1e3a2f;--birch:#f2f5ef;--blaze:#e2561a;--ink:#17211c;--mist:#dfe7dc;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--birch);line-height:1.6;font-size:18px}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{background:var(--pine);color:var(--birch)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px;gap:16px;flex-wrap:wrap}
+.brand{font-weight:800;text-decoration:none}
+nav a{margin-left:20px;text-decoration:none;font-size:.95rem}
+nav a:hover,nav a:focus-visible{text-decoration:underline}
+.hero{background:var(--pine);color:var(--birch);padding:40px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+h1{font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.08;margin:0 0 20px;font-weight:800;letter-spacing:-.02em}
+.lede{font-size:1.15rem;max-width:34em;margin:0 0 28px;color:#d6e2d9}
+.btn{display:inline-block;background:var(--blaze);color:var(--white);padding:14px 24px;border-radius:6px;font-weight:600;text-decoration:none;border:0;font:inherit;font-weight:600;cursor:pointer}
+.btn:hover,.btn:focus-visible{background:#c84a14}
+.book{background:var(--birch);color:var(--ink);border-radius:12px;padding:20px;max-width:360px;width:100%;justify-self:center;border:6px solid #0f1f18}
+.book h3{margin:0 0 2px;font-size:1.05rem}
+.book .sub{font-size:.85rem;color:#55645b;margin:0 0 14px}
+.days{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.day{border:1px solid #b9c7bd;border-radius:6px;padding:8px 4px;text-align:center;font-size:.85rem;background:var(--white)}
+.day b{display:block;font-size:1.05rem}
+.day.on{background:var(--pine);color:var(--birch);border-color:var(--pine)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.slot{border:1px solid #b9c7bd;border-radius:6px;padding:6px;text-align:center;font-size:.85rem;background:var(--white)}
+.slot.on{border:2px solid var(--blaze);font-weight:600}
+.confirm{background:var(--blaze);color:#fff;text-align:center;border-radius:6px;padding:10px;font-weight:600;font-size:.95rem}
+section{padding:64px 0}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.15;margin:0 0 24px;letter-spacing:-.01em}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:0;list-style:none;margin:0;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--pine);padding-top:16px}
+.steps li::before{content:counter(s);display:block;font-weight:800;font-size:1.6rem;color:var(--blaze);margin-bottom:4px}
+.steps strong{display:block;margin-bottom:4px}
+.alt{background:var(--mist)}
+.offer{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.offer>div{background:var(--birch);border-top:3px solid var(--pine);padding:20px}
+.price{font-size:2rem;font-weight:800;margin:0}
+.price small{font-size:1rem;font-weight:400}
+.offer h3{margin:0 0 8px}
+ul.plain{padding-left:20px;margin:12px 0 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+label{display:block;font-weight:600;margin:14px 0 4px;font-size:.95rem}
+input,textarea{width:100%;font:inherit;padding:10px 12px;border:1px solid #98a89d;border-radius:6px;background:var(--white);color:var(--ink)}
+textarea{min-height:110px}
+.hp{position:absolute;left:-9999px}
+footer{background:var(--pine);color:#c9d8cd;padding:32px 0;font-size:.9rem}
+footer a{color:var(--birch)}
+:focus-visible{outline:3px solid var(--blaze);outline-offset:2px}
+@media (max-width:800px){.hero .wrap,.two,.steps,.offer{grid-template-columns:1fr}.hero{padding-bottom:48px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">Tyler Hedlund Automation</a>
+    <nav><a href="#how">How it works</a><a href="#offer">Pricing</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>A website that books your jobs while you’re on the job.</h1>
+      <p class="lede">I build simple, good-looking websites with online booking for local service businesses, then keep them running for one flat monthly price. Customers pick a time instead of playing phone tag, and you get the details in your inbox.</p>
+      <a class="btn" href="#contact">Get a free mockup of your site</a>
+    </div>
+    <div class="book" aria-label="Example online booking page">
+      <h3>Book an appointment</h3>
+      <p class="sub">Example booking page</p>
+      <div class="days">
+        <div class="day">Mon<b>12</b></div>
+        <div class="day on">Tue<b>13</b></div>
+        <div class="day">Wed<b>14</b></div>
+      </div>
+      <div class="slots">
+        <div class="slot">8:00</div><div class="slot on">9:30</div><div class="slot">11:00</div>
+        <div class="slot">1:00</div><div class="slot">2:30</div><div class="slot">4:00</div>
+      </div>
+      <div class="confirm">Confirm Tuesday, 9:30 AM</div>
+    </div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><strong>I make you a free mockup.</strong>You see your own business on a real site before you pay anything.</li>
+      <li><strong>You approve it.</strong>Tell me what to change. Half to start, half when it goes live.</li>
+      <li><strong>I put it online and keep it running.</strong>Edits, hosting, and booking stay my job, not yours.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt" id="offer">
+  <div class="wrap">
+    <h2>What it costs</h2>
+    <div class="offer">
+      <div>
+        <h3>Website + Booking</h3>
+        <p class="price">$400 <small>one time</small></p>
+        <ul class="plain"><li>One-page site with your services, hours, and photos</li><li>Contact form and online booking page</li><li>Looks great on phones</li></ul>
+      </div>
+      <div>
+        <h3>Care Plan</h3>
+        <p class="price">$75 <small>per month</small></p>
+        <ul class="plain"><li>Hosting and keeping it online</li><li>Up to 2 small edits a month</li><li>Booking and form kept working</li><li>Month to month, cancel anytime</li></ul>
+      </div>
+      <div>
+        <h3>Add-ons</h3>
+        <p class="price">+$25 <small>per month</small></p>
+        <ul class="plain"><li>Appointment reminder emails</li><li>Review request after each job</li></ul>
+      </div>
+    </div>
+    <p><strong>Need more than one page, or something custom?</strong> I also take on larger projects, such as multi-page sites, custom features, and integrations with the tools you already use. Tell me what you have in mind and I’ll send you a quote.</p>
+    <p>You own your domain name. I just manage it for you, so you can always take it with you.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap two">
+    <div>
+      <h2>Based in Hinckley, Minnesota</h2>
+      <p>I’m Tyler Hedlund. I work small businesses around Pine County and nearby towns. I’m happy to meet in person or talk by phone.</p>
+      <p>Email: <a href="mailto:Tyler.Hedlund@tylerhedlundautomations.com">tyler@tylerhedlundautomations.com</a><br>
+      Phone: 612-206-2316</p>
+    </div>
+    <div>
+      <h2>Ask for a free mockup</h2>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+        <label for="n">Your name</label><input id="n" name="name" required>
+        <label for="b">Business name and town</label><input id="b" name="business" required>
+        <label for="e">Email or phone</label><input id="e" name="contact" required>
+        <label for="m">Anything I should know, or a custom project in mind? (optional)</label><textarea id="m" name="message"></textarea>
+        <p><button class="btn" type="submit">Send</button></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Tyler Hedlund Automation, Hinckley, Minnesota. <a href="privacy.html">Privacy Policy</a>
+  </div>
+</footer>
+</body>
+</html>
