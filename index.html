@@ -135,19 +135,20 @@ footer a{color:var(--birch)}
     <div>
       <h2>Based in Hinckley, Minnesota</h2>
       <p>I’m Tyler Hedlund. I work small businesses around Pine County and nearby towns. I’m happy to meet in person or talk by phone.</p>
-      <p>Email: <a href="mailto:Tyler.Hedlund@tylerhedlundautomations.com">tyler@tylerhedlundautomations.com</a><br>
+      <p>Email: <a href="mailto:Tyler.Hedlund@tylerhedlundautomations.com">Tyler.Hedlund@tylerhedlundautomations.com</a><br>
       Phone: 612-206-2316</p>
     </div>
     <div>
       <h2>Ask for a free mockup</h2>
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <form id="mockup-form">
+        <p class="hp"><label>Leave this empty <input id="hp" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <label for="n">Your name</label><input id="n" name="name" required>
-        <label for="b">Business name and town</label><input id="b" name="business" required>
+        <label for="b">Business name</label><input id="b" name="business" required>
+        <label for="b">Business address</address></label><input id="ba" name="business address" required>
         <label for="e">Email or phone</label><input id="e" name="contact" required>
         <label for="m">Anything I should know, or a custom project in mind? (optional)</label><textarea id="m" name="message"></textarea>
-        <p><button class="btn" type="submit">Send</button></p>
+        <p><button class="btn" id="Submit" type="submit">Send</button></p>
+        <p id="form-status" role="status"></p>
       </form>
     </div>
   </div>
@@ -159,5 +160,37 @@ footer a{color:var(--birch)}
     © 2026 Tyler Hedlund Automation, Hinckley, Minnesota. <a href="privacy.html">Privacy Policy</a>
   </div>
 </footer>
+<script>
+  const url = "https://TylerHedlund.pythonanywhere.com/free_mockup";
+  document.getElementById('mockup-form').addEventListener('submit', async (e) =>{
+    e.preventDefault();
+
+    if (document.getElementById('hp').value) return;
+
+    const status = document.getElementById('form-status');
+    
+    const data = {
+      "Client_name": document.getElementById('n').value.trim(),
+      "Business_name": document.getElementById('b').value.trim(),
+      "Business_address": document.getElementById('ba').value.trim(),
+      "Contact": document.getElementById('e').value.trim(),
+      "Extra_info": document.getElementById('m').value.trim(),
+    }
+    status.textContent = 'Sending...';
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      status.textContent = 'Thanks! I\u2019ll be in touch soon.';
+      e.target.reset();
+    } catch (err) {
+      console.error(err);
+      statis.textContent = 'Something went wrong. Please email me directly instead.';
+    }
+  });
+</script>
 </body>
 </html>
