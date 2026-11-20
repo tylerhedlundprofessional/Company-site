@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-  <!-- Tells Google not to list this demo page in search results -->
   <meta name="robots" content="noindex">
 
   <title>Miami Nails | Website mockup</title>
@@ -14,56 +13,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================
-       1. COLORS AND SETTINGS
-       Change a value here and it changes everywhere on the page.
-       ========================================================== */
     :root {
       color-scheme: light;
 
       --font-body:    'Jost', sans-serif;
       --font-heading: 'Cormorant Garamond', Georgia, serif;
 
-      --bg:      #f6f1ea;               /* page background (warm cream) */
-      --text:    #1c1a18;               /* main text (charcoal) */
-      --gold:    #b08a4a;               /* accent color */
-      --card:    #fffdf9;               /* card and button backgrounds */
-      --line:    #d9cfbf;               /* thin divider lines */
-      --border:  1px solid #e2d8c7;     /* card borders */
+      --bg:      #f6f1ea;
+      --text:    #1c1a18;
+      --gold:    #b08a4a;
+      --card:    #fffdf9;
+      --line:    #d9cfbf;
+      --border:  1px solid #e2d8c7;
       --header:  rgba(246, 241, 234, .9);
-      --dark:    #1c1a18;               /* dark bands (footer, call-to-action) */
-      --on-dark: #f6f1ea;               /* text on the dark bands */
-      --radius:  2px;                   /* how square the corners are */
+      --dark:    #1c1a18;
+      --on-dark: #f6f1ea; 
+      --radius:  2px;
     }
 
-    /* ==========================================================
-       2. ANIMATIONS
-       ========================================================== */
-    /* Fade and slide up */
     @keyframes rise {
       from { opacity: 0; transform: translateY(26px); }
       to   { opacity: 1; transform: none; }
     }
 
-    /* Gentle up-and-down float for the nail polish shapes */
     @keyframes bob {
       0%, 100% { transform: translateY(0); }
       50%      { transform: translateY(-14px); }
     }
 
-    /* Quick side-to-side shake when the booking form is incomplete */
     @keyframes shake {
       25% { transform: translateX(-6px); }
       75% { transform: translateX(6px); }
     }
 
-    /* Fade between pages (Home, Services, Gallery, Book) */
+
     @keyframes page-out { to   { opacity: 0; transform: scale(.98); } }
     @keyframes page-in  { from { opacity: 0; transform: translateY(14px); } }
     ::view-transition-old(root) { animation: page-out .2s both; }
     ::view-transition-new(root) { animation: page-in .4s cubic-bezier(.2, .7, .2, 1) both; }
 
-    /* Sections fade in as you scroll to them (newer browsers only) */
+
     @supports (animation-timeline: view()) {
       .reveal {
         animation: rise linear both;
@@ -72,14 +61,12 @@
       }
     }
 
-    /* Turn off all motion for people who ask their device for less motion */
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
 
-    /* ==========================================================
-       3. BASICS
-       ========================================================== */
+
     * { box-sizing: border-box; }
 
     html {
@@ -104,7 +91,7 @@
       outline-offset: 3px;
     }
 
-    /* Centered column that holds the content on every page */
+
     .wrap {
       position: relative;
       max-width: 1120px;
@@ -114,9 +101,6 @@
 
     section { padding: 64px 0; }
 
-    /* ==========================================================
-       4. TEXT STYLES
-       ========================================================== */
     h1, h2, h3 {
       margin: 0 0 .4em;
       font-family: var(--font-heading);
@@ -133,7 +117,7 @@
     }
     h3 { font-size: 1.2rem; }
 
-    /* The larger paragraph under a headline */
+
     .lede {
       max-width: 30em;
       margin: 0 auto 26px;
@@ -141,15 +125,12 @@
       opacity: .85;
     }
 
-    /* Smaller line under a section title */
+
     .subtitle {
       margin: 0 0 22px;
       opacity: .75;
     }
 
-    /* ==========================================================
-       5. BUTTONS
-       ========================================================== */
     .btn {
       display: inline-block;
       padding: 13px 26px;
@@ -170,17 +151,14 @@
     }
     .btn:active { transform: none; }
 
-    /* Outlined version used for secondary buttons */
+
     .btn-outline { border: 2px solid currentColor; }
 
-    /* ==========================================================
-       6. HEADER AND NAVIGATION
-       ========================================================== */
     header {
       position: sticky;
       top: 0;
       z-index: 30;
-      padding-top: env(safe-area-inset-top, 0px);   /* keeps it clear of the phone notch */
+      padding-top: env(safe-area-inset-top, 0px);
       background: var(--header);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
@@ -217,24 +195,21 @@
     }
     nav a:hover { transform: translateY(-2px); }
 
-    /* Gold line under the page you're on */
+
     nav a[aria-current] { box-shadow: inset 0 -2px var(--gold); }
 
-    /* ==========================================================
-       7. HOME PAGE: HERO (top section)
-       ========================================================== */
+
     .hero {
       padding: 68px 0 76px;
       text-align: center;
     }
 
-    /* Headline, paragraph, and buttons slide in one after another */
+
     .intro > * { animation: rise .8s cubic-bezier(.2, .7, .2, 1) both; }
     .intro > :nth-child(2) { animation-delay: .12s; }
     .intro > :nth-child(3) { animation-delay: .24s; }
 
-    /* The row of floating nail polish shapes.
-       Each one's color comes from its style="--hue: ..." in the HTML. */
+
     .polish-row {
       display: flex;
       flex-wrap: wrap;
@@ -257,17 +232,14 @@
     .polish:nth-child(5) { animation-delay: -3.2s; }
     .polish:hover { transform: scale(1.12) rotate(-5deg); }
 
-    /* ==========================================================
-       8. CARDS AND LAYOUT HELPERS
-       ========================================================== */
-    /* Three columns (two on tablets, one on phones) */
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
     }
 
-    /* Two columns side by side */
+
     .two {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -286,18 +258,13 @@
       box-shadow: 0 18px 36px rgba(0, 0, 0, .14);
     }
 
-    /* The big gold "4.6 ★" */
     .rating {
       font-family: var(--font-heading);
       font-size: 2.6rem;
       color: var(--gold);
     }
 
-    /* ==========================================================
-       9. GALLERY PHOTOS
-       Right now these are colored placeholders. To use a real
-       photo, replace the <div class="photo"> with an <img> tag.
-       ========================================================== */
+
     .work {
       margin: 0;
       transition: transform .35s;
@@ -325,7 +292,6 @@
       color: rgba(255, 255, 255, .9);
     }
 
-    /* A shine that sweeps across the photo on hover */
     .photo::after {
       content: "";
       position: absolute;
@@ -346,7 +312,7 @@
       font-size: 1.05rem;
     }
 
-    /* Filter buttons above the gallery (All, Classic, Gel, Nail art) */
+
     .filters {
       display: flex;
       flex-wrap: wrap;
@@ -370,9 +336,7 @@
       color: var(--on-dark);
     }
 
-    /* ==========================================================
-       10. SERVICES PAGE (the price list)
-       ========================================================== */
+
     .menu-item {
       display: flex;
       justify-content: space-between;
@@ -394,15 +358,13 @@
       white-space: nowrap;
     }
 
-    /* ==========================================================
-       11. BOOK PAGE (the demo booking form)
-       ========================================================== */
+
     .booking h3 {
       margin: 14px 0 8px;
       font-size: 1rem;
     }
 
-    /* Rows of choices (services, days, times) */
+
     .options {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -434,9 +396,6 @@
     }
     .booking.shake { animation: shake .4s; }
 
-    /* ==========================================================
-       12. CALL-TO-ACTION BAND AND FOOTER
-       ========================================================== */
     .cta {
       background: var(--dark);
       color: var(--on-dark);
@@ -454,14 +413,9 @@
       font-size: .88rem;
     }
 
-    /* ==========================================================
-       13. PAGE SWITCHING (hides the pages you aren't looking at)
-       ========================================================== */
     .view[hidden] { display: none; }
 
-    /* ==========================================================
-       14. TABLETS AND PHONES
-       ========================================================== */
+
     @media (max-width: 820px) {
       .two  { grid-template-columns: 1fr; }
       .grid { grid-template-columns: 1fr 1fr; }
@@ -475,9 +429,7 @@
 
 <body>
 
-  <!-- ==========================================================
-       HEADER (logo and menu, shows on every page)
-       ========================================================== -->
+
   <header>
     <div class="wrap">
       <a class="brand" href="#home">Miami Nails</a>
@@ -492,17 +444,13 @@
 
   <main>
 
-    <!-- ========================================================
-         PAGE 1: HOME
-         ======================================================== -->
+
     <div class="view" data-view="home">
 
-      <!-- Top section -->
       <section class="hero">
         <div class="wrap">
 
           <div class="intro">
-            <!-- EDIT THE HEADLINE AND INTRO TEXT HERE -->
             <h1>Quiet luxury for your hands and feet.</h1>
             <p class="lede">
               Manicures, pedicures, gel, and nail art in the heart of North Branch.
@@ -515,7 +463,6 @@
             </p>
           </div>
 
-          <!-- Floating nail polish shapes. Change --hue (0 to 360) to change a color. -->
           <div class="polish-row" aria-hidden="true">
             <div class="polish" style="--hue: 345;"></div>
             <div class="polish" style="--hue: 15;"></div>
@@ -527,7 +474,7 @@
         </div>
       </section>
 
-      <!-- What we do -->
+
       <section>
         <div class="wrap">
           <h2 class="reveal">What we do</h2>
@@ -554,7 +501,6 @@
         </div>
       </section>
 
-      <!-- Gallery preview -->
       <section>
         <div class="wrap">
           <h2 class="reveal">Fresh from the chair</h2>
@@ -581,7 +527,6 @@
         </div>
       </section>
 
-      <!-- Reviews and address (EDIT THE RATING AND ADDRESS HERE) -->
       <section>
         <div class="wrap two">
           <div class="card reveal">
@@ -596,7 +541,6 @@
         </div>
       </section>
 
-      <!-- Call-to-action band -->
       <section class="cta">
         <div class="wrap reveal">
           <h2>Ready for fresh nails?</h2>
@@ -608,10 +552,7 @@
     </div>
 
 
-    <!-- ========================================================
-         PAGE 2: SERVICES
-         EDIT THE SERVICES AND PRICES HERE. Replace each $XX.
-         ======================================================== -->
+
     <div class="view" data-view="services" hidden>
 
       <section class="page-title">
@@ -690,11 +631,7 @@
     </div>
 
 
-    <!-- ========================================================
-         PAGE 3: GALLERY
-         Each <figure> is one photo. data-style (Classic, Gel, or Art)
-         decides which filter button shows it.
-         ======================================================== -->
+
     <div class="view" data-view="gallery" hidden>
 
       <section class="page-title">
@@ -707,7 +644,6 @@
       <section style="padding-top: 14px;">
         <div class="wrap">
 
-          <!-- Filter buttons -->
           <div class="filters">
             <button class="filter selected" data-filter="all">All</button>
             <button class="filter" data-filter="Classic">Classic</button>
@@ -768,11 +704,7 @@
     </div>
 
 
-    <!-- ========================================================
-         PAGE 4: BOOK
-         The booking form is a demo. It shows how booking will feel,
-         but it doesn't book anything yet.
-         ======================================================== -->
+
     <div class="view" data-view="book" hidden>
 
       <section class="page-title">
@@ -785,7 +717,6 @@
       <section style="padding-top: 14px;">
         <div class="wrap two">
 
-          <!-- Demo booking form. data-field says which choice a button belongs to. -->
           <div class="card booking reveal">
 
             <h3>Service</h3>
@@ -822,7 +753,6 @@
 
           </div>
 
-          <!-- Location and contact (EDIT THE HOURS AND PHONE HERE) -->
           <div class="card reveal">
             <h3>Visit us</h3>
             <p>6063 Main St C, North Branch, MN 55056</p>
@@ -845,9 +775,7 @@
 
   </main>
 
-  <!-- ==========================================================
-       FOOTER (shows on every page)
-       ========================================================== -->
+
   <footer>
     <div class="wrap">
       © 2026 Miami Nails, North Branch, MN · [PHONE] · [Mockup by Tyler Hedlund Automation]
@@ -856,18 +784,14 @@
 
 
   <script>
-    /* ==========================================================
-       PAGE SWITCHING
-       Shows Home, Services, Gallery, or Book based on the part of
-       the address after the # (for example, #services).
-       ========================================================== */
+
     const pages = [...document.querySelectorAll('.view')];
     const menuLinks = [...document.querySelectorAll('nav a')];
 
     function showPage() {
       let name = (location.hash || '#home').slice(1);
 
-      // If the address doesn't match a page, fall back to Home
+
       if (!pages.some(page => page.dataset.view === name)) name = 'home';
 
       pages.forEach(page => { page.hidden = page.dataset.view !== name; });
@@ -877,7 +801,7 @@
       scrollTo(0, 0);
     }
 
-    // Fade between pages when the browser supports it, otherwise just switch
+
     addEventListener('hashchange', () => {
       if (document.startViewTransition) document.startViewTransition(showPage);
       else showPage();
@@ -885,11 +809,7 @@
     showPage();
 
 
-    /* ==========================================================
-       GALLERY FILTER BUTTONS
-       Clicking a filter hides the photos that don't match.
-       ========================================================== */
-    const filterButtons = document.querySelectorAll('.filter');
+
     const photos = document.querySelectorAll('[data-view="gallery"] .work');
 
     filterButtons.forEach(button => {
@@ -904,21 +824,15 @@
     });
 
 
-    /* ==========================================================
-       DEMO BOOKING FORM
-       Remembers the service, day, and time that were clicked.
-       When all three are picked, shows a "you're all set" message.
-       ========================================================== */
     const booking = document.querySelector('.booking');
     const requestButton = document.getElementById('request-button');
     const message = booking.querySelector('.booking-message');
-    const chosen = {};   // fills in as the visitor clicks, for example { service: 'Manicure' }
+    const chosen = {};   
 
     booking.querySelectorAll('.option').forEach(option => {
       option.addEventListener('click', () => {
         const field = option.dataset.field;
 
-        // Highlight this choice and un-highlight the others in the same row
         booking.querySelectorAll('.option[data-field="' + field + '"]').forEach(other => {
           other.classList.toggle('selected', other === option);
         });
@@ -929,11 +843,10 @@
     });
 
     requestButton.addEventListener('click', () => {
-      // Missing something? Show a hint and shake the card
       if (!chosen.service || !chosen.day || !chosen.time) {
         message.textContent = 'Please pick a service, a day, and a time.';
         booking.classList.remove('shake');
-        void booking.offsetWidth;          // restarts the shake animation
+        void booking.offsetWidth;
         booking.classList.add('shake');
         return;
       }
